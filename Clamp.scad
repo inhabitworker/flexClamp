@@ -11,7 +11,7 @@
     Radius = 10;
 
 // The overall thickness of the spring body. This will inform the radius of the revolute joints with plate.
-    Thickness = 5;
+    Thickness = 3;
 
 // The number of layers interior to the spring. We would like the thickness of these to be more than the slicer wall thickness. 
     Layers = 2; // [0 : 1 : 100]
@@ -27,10 +27,10 @@
     ExteriorLength = 5;
 
 // Thickness of the plates. This informs the angle of our spring opening.
-    PlateThickness = Thickness/2;
+    PlateThickness = Thickness/1.5;
 
 // The initial gap between the plate and the axis mirroring them (i.e. 2*this = gap between plates).
-    Gap = 0.3;
+    Gap = 0.25;
 
 // Extend the lips of the plate.
     PlateExtension = 3;
@@ -52,7 +52,7 @@
     RodRad = HoleRad - Clearance;
 
     // Span of plate, gap etc.
-    PlateToPoint = (CapRad + PlateThickness/2 + Overlap + Gap);
+    PlateToPoint = (Thickness/2 + PlateThickness/2 + Overlap + Gap);
     OpeningAngle = asin(PlateToPoint / InternalRadius);
     OpeningTerminalX = PlateToPoint;
     OpeningTerminalY = cos(OpeningAngle) * InternalRadius;
@@ -60,7 +60,6 @@
     OpeningR = [OpeningTerminalX, -OpeningTerminalY, 0];
 
     ChannelCut = 2*Width/3;
-
 
 module Sector() {
     SectorX = sin(OpeningAngle) * 2 * Radius;
@@ -177,7 +176,6 @@ module Spring() {
         cylinder(CapHat , CapRad, CapRad);
     }
 }
-
 module Plate() {
     translate(OpeningR)
     // Add Rods
@@ -232,8 +230,6 @@ module Plate() {
         cylinder(Width-Width/6, RodRad, RodRad, center=true);
     }
 }
-
- 
 module Clamp() {
     union() {
         Spring();

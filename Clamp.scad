@@ -1,30 +1,25 @@
 // Input Parameters
 
-/* [ General ] */ 
+/* [General] */ 
 
 // The print-in-place clearance, your printer configuration may be capable of less or more. Default 0.3mm is the typical choice.
     Clearance = 0.3; // [0 : 0.05 : 0.5]
 
-/* [ Spring ] */
+/* [Spring] */
 
 // The radius of the spring circle.
     Radius = 10;
 
-// The overall thickness of the spring body. This will inform the radius of the revolute joints with plate.
+// Gross thickness of spring profile.
     Thickness = 3;
 
-// The number of layers interior to the spring. We would like the thickness of these to be more than the slicer wall thickness. 
+// The number of layers to the spring.
     Layers = 2; // [0 : 1 : 100]
 
-/* [ Plates ] */
+/* [Plates] */
 
-// The width of the plates doubles as the depth of the spring, as their extent forms the first layer of printing.
+// The depth/height of the mesh, thus width of the plates.
     Width = 10;
-
-// The length of a plate extending into the interior of the circle/spring. Limited by spring radius.
-    InteriorLength = 5;
-// The length of a plate as it extends outwards. Arbitrary.
-    ExteriorLength = 5;
 
 // Thickness of the plates. This informs the angle of our spring opening.
     PlateThickness = Thickness/1.5;
@@ -35,7 +30,7 @@
 // Extend the lips of the plate.
     PlateExtension = 3;
 
-// [* Hidden *]
+/* [Hidden] */
     $fs = 0.5;
     $fn = 40;
     Overlap = 0.1;

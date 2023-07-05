@@ -193,7 +193,7 @@ module Clamp(
                         translate([-Thickness/2 - Overlap, 0, 0]) 
                         union() {
                             // Initial, with interior
-                            cube([PlateThickness, 2*Thickness, Width], center=true);
+                            cube([PlateThickness, 4*Thickness, Width], center=true);
                             // Extension
                             translate([-PlateThickness/2, - Thickness - PlateExtension, -Width/2]) 
                             cube([PlateThickness, PlateExtension, Width]);
